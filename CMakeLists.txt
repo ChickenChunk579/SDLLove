@@ -85,7 +85,7 @@ if (USINGIOS)
         XCODE_ATTRIBUTE_LD_RUNPATH_SEARCH_PATHS "@executable_path/Frameworks")
 
     include(BundleUtilities)
-    fixup_bundle("love.app" "" "${CMAKE_CURRENT_SOURCE_DIR}/Frameworks")
+    fixup_bundle("love.app" "" "${CMAKE_CURRENT_SOURCE_DIR}/natives/sdl/iossimulator")
 else()
     target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
 endif()
