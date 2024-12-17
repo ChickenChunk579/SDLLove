@@ -81,7 +81,7 @@ if (USINGIOS)
     target_link_libraries(love PRIVATE "-framework SDL3")
     set_target_properties(love PROPERTIES LINK_FLAGS "-Wl,-F${CMAKE_SOURCE_DIR}/natives/sdl/iossimulator")
     target_include_directories(love PRIVATE ${CMAKE_SOURCE_DIR}/natives/sdl/include)
-    set_target_properties(your_target PROPERTIES 
+    set_target_properties(love PROPERTIES 
         XCODE_ATTRIBUTE_LD_RUNPATH_SEARCH_PATHS "@executable_path/Frameworks")
 else()
     target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
