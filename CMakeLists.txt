@@ -6,12 +6,7 @@ set_target_properties(SDL3 PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/natives/sdl/include"
 )
 if (USINGIOS)
-    add_library(SDL3Framework)
-    target_link_libraries(SDL3Framework PRIVATE "-framework CoreFoundation")
-    target_link_libraries(SDL3Framework PRIVATE "-framework UIKit")
-    target_link_libraries(SDL3Framework PRIVATE "-framework SDL3")
-    set_target_properties(SDL3Framework PROPERTIES LINK_FLAGS "-Wl,-F${CMAKE_SOURCE_DIR}/natives/iossimulator")
-    set(SDL3_DEPS SDL3Framework)
+    
 else()
     if (WIN32)
         set_target_properties(SDL3 PROPERTIES
@@ -34,6 +29,14 @@ else()
     endif()
 endif()
 
-
 add_executable(love main.cpp)
+
+if (USINGIOS)
+
+    target_link_libraries(love PRIVATE "-framework CoreFoundation")
+    target_link_libraries(love PRIVATE "-framework UIKit")
+    target_link_libraries(love PRIVATE "-framework SDL3")
+    set_target_properties(love PROPERTIES LINK_FLAGS "-Wl,-F${CMAKE_SOURCE_DIR}/natives/iossimulator")
+endif()
+
 target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
