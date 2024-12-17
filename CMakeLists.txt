@@ -25,7 +25,7 @@ if (EMSCRIPTEN)
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
-if (EQUAL(PLATFORM SIMULATOR64))
+if (PLATFORM EQUAL SIMULATOR64)
     add_library(SDL3Framework INTERFACE)
     target_link_libraries(SDL3Framework PRIVATE -framework ${CMAKE_SOURCE_DIR}/natives/iossimulator/SDL3)
 endif()
