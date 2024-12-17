@@ -37,6 +37,6 @@ if (USINGIOS)
     target_link_libraries(love PRIVATE "-framework UIKit")
     target_link_libraries(love PRIVATE "-framework SDL3")
     set_target_properties(love PROPERTIES LINK_FLAGS "-Wl,-F${CMAKE_SOURCE_DIR}/natives/iossimulator")
+else()
+    target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
 endif()
-
-target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
