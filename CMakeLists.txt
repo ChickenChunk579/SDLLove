@@ -5,7 +5,7 @@ add_library(SDL3 STATIC IMPORTED)
 set_target_properties(SDL3 PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/natives/sdl/include"
 )
-if (PLATFORM EQUAL SIMULATOR64)
+if (USINGIOS)
     add_library(SDL3Framework INTERFACE)
     target_link_libraries(SDL3Framework PRIVATE -framework ${CMAKE_SOURCE_DIR}/natives/iossimulator/SDL3)
     set(SDL3_DEPS SDL3Framework)
