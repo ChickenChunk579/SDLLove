@@ -1,0 +1,29 @@
+name: Build (iOS)
+
+on: [push, pull_request]
+
+jobs:
+  build-iossimulator:
+    name: "iOS Simulator Build"
+    runs-on: 'macos-latest'
+    steps:
+      - uses: actions/checkout@main
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: 'Configure'
+        run: |
+          mkdir build
+          cd build
+          cmake . -G Xcode -DCMAKE_TOOLCHAIN_FILE=ios.toolchain.cmake -DPLATFORM=SIMULATOR64
+      - name: 'Build'
+        run: |
+          cmake --build build --config Release
+      - name: "Create archive"
+        run: zip -r "ios.zip" .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iOS Simulator
+          path: ios.zip
