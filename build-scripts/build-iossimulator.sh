@@ -9,4 +9,4 @@ cd build/macos-iossimulator
 cmake ../.. -G Xcode -DCMAKE_TOOLCHAIN_FILE=ios.toolchain.cmake -DPLATFORM=SIMULATORARM64 -DUSINGIOS=YES
 
 echo "Step 2: Build"
-cmake --build build --config Release
+cmake --build . --config Release
