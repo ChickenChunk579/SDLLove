@@ -39,5 +39,5 @@ jobs:
         uses: appetizeio/github-action-appetize@v1.0.3
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          appFile: test/app.zip
+          appFile: app.zip
           platform: 'ios'
