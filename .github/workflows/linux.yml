@@ -22,7 +22,7 @@ jobs:
       - name: "Install dependencies"
         run: |
           sudo apt update
-          sudo apt install -y build-essential clang
+          sudo apt install -y build-essential clang ninja-build
 
       - name: 'Build'
         run: |
