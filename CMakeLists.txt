@@ -50,7 +50,7 @@ if (USINGIOS)
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory 
                     "${SOURCE_DIR}/iossim-assets"
-                    "${INSTALL_PREFIX}/love.app")
+                    "${CMAKE_CURRENT_BINARY_DIR}/Release-iphonesimulator/love.app")
 else()
     target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
 endif()
