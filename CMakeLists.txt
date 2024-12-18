@@ -44,13 +44,6 @@ if (USINGIOS)
     target_include_directories(love PRIVATE ${CMAKE_SOURCE_DIR}/natives/sdl/include)
     set_target_properties(love PROPERTIES 
         XCODE_ATTRIBUTE_LD_RUNPATH_SEARCH_PATHS "@executable_path/Frameworks")
-
-    add_custom_command(
-        TARGET love
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory 
-                    "${SOURCE_DIR}/iossim-assets"
-                    "${CMAKE_CURRENT_BINARY_DIR}/Release-iphonesimulator/love.app")
 else()
     target_link_libraries(love PRIVATE SDL3 ${SDL3_DEPS})
 endif()
