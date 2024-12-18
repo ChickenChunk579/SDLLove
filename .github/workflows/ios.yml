@@ -23,17 +23,17 @@ jobs:
         with:
           xcode-version: latest-stable
 
-      - name: 'Configure'
-        run: |
-          mkdir build
-          cd build
-          cmake .. -G Xcode -DCMAKE_TOOLCHAIN_FILE=ios.toolchain.cmake -DPLATFORM=SIMULATORARM64 -DUSINGIOS=YES
       - name: 'Build'
         run: |
-          cmake --build build --config Release
-      - name: "Create archive"
-        run: zip -r "ios.zip" .
-      - uses: actions/upload-artifact@v4
+          sh build-scripts/build-iossimulator.sh
+      
+      - name: "Create app archive"
+        run: |
+          zip -r "app.zip" "build/macos-iossimulator"
+      
+      - name: Upload to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.3
         with:
-          name: iOS Simulator
-          path: ios.zip
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          appFile: test/app.zip
+          platform: 'ios'

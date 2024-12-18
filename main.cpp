@@ -61,7 +61,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    window = SDL_CreateWindow("Hello SDL", 1280, 720, 0);
+#if defined(__APPLE__)
+    window = SDL_CreateWindow("LOVE", 0, 0, 0);
+#else
+    window = SDL_CreateWindow("LOVE", 1280, 720, 0);
+#endif
     if (!window) {
         SDL_Log("SDL_CreateWindow() failed: %s", SDL_GetError());
         return SDL_APP_FAILURE;
