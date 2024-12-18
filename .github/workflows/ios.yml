@@ -27,10 +27,6 @@ jobs:
         run: |
           sh build-scripts/build-iossimulator.sh
 
-      - name: "Copy assets"
-        run: |
-          cp -r iossim-assets/* build/macos-iossimulator/Release-iphonesimulator/love.app
-      
       - name: "Create app archive"
         run: |
           zip -r "app.zip" "build/macos-iossimulator"

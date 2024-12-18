@@ -10,3 +10,6 @@ cmake ../.. -G Xcode -DCMAKE_TOOLCHAIN_FILE=ios.toolchain.cmake -DPLATFORM=SIMUL
 
 echo "Step 2: Build"
 cmake --build . --config Release
+
+echo "Step 3: Add assets"
+cp -r iossim-assets/* build/macos-iossimulator/Release-iphonesimulator/love.app
