@@ -12,4 +12,5 @@ echo "Step 2: Build"
 cmake --build . --config Release
 
 echo "Step 3: Add assets"
+cd ../..
 cp -r iossim-assets/* build/macos-iossimulator/Release-iphonesimulator/love.app
